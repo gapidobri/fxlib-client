@@ -1,25 +1,44 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+import Player from './components/Player';
+import { Button, Container, Navbar, NavbarBrand } from 'reactstrap';
+class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { apiResponse: '' };
+  }
+
+  callAPI() {
+    fetch('http://fxlib.gasperdobrovoljc.com/api/file/')
+    .then(res => res.text())
+    .then(res => {
+      const generatedList = JSON.parse(res).files.map(file => <Player title={ file }></Player>);
+      this.setState({ apiResponse: generatedList });
+    });
+  }
+
+  componentWillMount() {
+    this.callAPI();
+  }
+
+  render() {
+    return <div className='App'>
+      <Navbar className='navbar-horizontal navbar-dark bg-default' expand='lg'>
+          <NavbarBrand>
+            FXLIB
+          </NavbarBrand>
+          <div className='ml-lg-auto'>
+            <Button>Upload</Button>
+          </div>
+      </Navbar>
+      <div className='Buttons'>
+        { this.state.apiResponse }
+      </div>
     </div>
-  );
+  }
+
 }
 
 export default App;
