@@ -1,42 +1,34 @@
 import './App.css';
-import React from 'react'
+import React from 'react';
 
-import Player from './components/Player';
-import { Button, Container, Navbar, NavbarBrand } from 'reactstrap';
+import { Navbar, Nav, Button } from 'reactstrap';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+
+import Board from './pages/Board';
+import Upload from './pages/Upload';
+
 class App extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = { apiResponse: '' };
-  }
-
-  callAPI() {
-    fetch('http://fxlib.gasperdobrovoljc.com/api/file/')
-    .then(res => res.text())
-    .then(res => {
-      const generatedList = JSON.parse(res).files.map(file => <Player title={ file }></Player>);
-      this.setState({ apiResponse: generatedList });
-    });
-  }
-
-  componentWillMount() {
-    this.callAPI();
-  }
-
+  
   render() {
-    return <div className='App'>
-      <Navbar className='navbar-horizontal navbar-dark bg-default' expand='lg'>
-          <NavbarBrand>
-            FXLIB
-          </NavbarBrand>
-          <div className='ml-lg-auto'>
-            <Button>Upload</Button>
-          </div>
-      </Navbar>
-      <div className='Buttons'>
-        { this.state.apiResponse }
-      </div>
-    </div>
+    return (
+      <Router>
+        <Navbar className='navbar-horizontal navbar-dark bg-default' expand='lg'>
+          <Nav className="ml-lg-auto" navbar>
+            <Link to='/upload'>
+              <Button>Upload</Button>
+            </Link>
+          </Nav>
+        </Navbar>
+        <Switch>
+          <Route path='/upload'>
+            <Upload />
+          </Route>
+          <Route path='/'>
+            <Board />
+          </Route>
+        </Switch>
+      </Router>
+    );
   }
 
 }
