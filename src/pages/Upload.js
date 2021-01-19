@@ -22,7 +22,7 @@ class Upload extends React.Component {
     onClickHandler = () => {
         const data = new FormData();
         data.append('sound', this.state.selectedFile);
-        axios.post('http://fxlib.gasperdobrovoljc.com/api/upload', data, {})
+        axios.post('https://fxlib.gasperdobrovoljc.com/api/upload', data, {})
         .then(res => {
             if (res.data.status === false) {
                 alert(res.data.message);
@@ -30,6 +30,7 @@ class Upload extends React.Component {
             } else {
                 alert('File successfully uploaded!');
             }
+
             
         })
     }

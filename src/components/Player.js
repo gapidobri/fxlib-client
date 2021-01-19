@@ -13,7 +13,7 @@ class Player extends React.Component {
 
     playAudio(title) {
         if (!this.state.isPlaying) {
-            this.audio = new Audio(`http://fxlib.gasperdobrovoljc.com/api/file/${title}`);
+            this.audio = new Audio(`https://fxlib.gasperdobrovoljc.com/api/file/${title}`);
             this.audio.play();
         }
         else
