@@ -1,7 +1,6 @@
 import React from 'react'
 
 import Player from '../components/Player';
-require('dotenv').config();
 
 class Board extends React.Component {
 
@@ -11,7 +10,7 @@ class Board extends React.Component {
 	}
 
 	fetchSounds() {
-		fetch(`${process.env.API_URL}file/`)
+		fetch('http://fxlib.gasperdobrovoljc.com/api/file/')
 		.then(res => res.text())
 		.then(res => {
 			const list = JSON.parse(res).files.map(file => <Player title={ file }></Player>);

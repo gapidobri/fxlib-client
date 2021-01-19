@@ -2,7 +2,6 @@
 import './Player.css';
 import React from 'react';
 import { Button } from 'reactstrap';
-require('dotenv').config();
 
 class Player extends React.Component {
 
@@ -14,7 +13,7 @@ class Player extends React.Component {
 
     playAudio(title) {
         if (!this.state.isPlaying) {
-            this.audio = new Audio(`${process.env.API_URL}file/${title}`);
+            this.audio = new Audio(`http://fxlib.gasperdobrovoljc.com/api/file/${title}`);
             this.audio.play();
         }
         else
