@@ -24,9 +24,13 @@ class Upload extends React.Component {
         data.append('sound', this.state.selectedFile);
         axios.post('http://fxlib.gasperdobrovoljc.com/api/upload', data, {})
         .then(res => {
-            if (res.data.status == false) {
+            if (res.data.status === false) {
                 alert(res.data.message);
+                return;
+            } else {
+                alert('File successfully uploaded!');
             }
+            
         })
     }
 
