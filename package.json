@@ -9,6 +9,7 @@
     "axios": "^0.21.1",
     "bootstrap": "^4.5.3",
     "cross-env": "^7.0.3",
+    "dotenv": "^8.2.0",
     "node-sass": "^4.14.1",
     "react": "^17.0.1",
     "react-audio-player": "^0.14.0",

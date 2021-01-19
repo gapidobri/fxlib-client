@@ -1,6 +1,7 @@
 import './Upload.css';
 import React from 'react';
 import axios from 'axios';
+require('dotenv').config();
 
 import { Button } from 'reactstrap';
 
@@ -22,7 +23,7 @@ class Upload extends React.Component {
     onClickHandler = () => {
         const data = new FormData();
         data.append('sound', this.state.selectedFile);
-        axios.post('http://fxlib.gasperdobrovoljc.com/api/upload', data, {})
+        axios.post(`${process.env.API_URL}upload`, data, {})
         .then(res => {
             if (res.data.status == false) {
                 alert(res.data.message);
