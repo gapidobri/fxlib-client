@@ -30,8 +30,6 @@ class Upload extends React.Component {
             } else {
                 alert('File successfully uploaded!');
             }
-
-            
         })
     }
 
@@ -46,4 +44,4 @@ class Upload extends React.Component {
     
 }
 
-export default Upload
+export default Upload;

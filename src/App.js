@@ -14,6 +14,9 @@ class App extends React.Component {
       <Router>
         <Navbar className='navbar-horizontal navbar-dark bg-default' expand='lg'>
           <Nav className="ml-lg-auto" navbar>
+            <Link to='/'>
+              <Button>SoundBoard</Button>
+            </Link>
             <Link to='/upload'>
               <Button>Upload</Button>
             </Link>
